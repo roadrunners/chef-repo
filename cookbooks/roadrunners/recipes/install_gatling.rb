@@ -14,3 +14,8 @@ template "/etc/profile.d/gatling_home.sh" do
   source "gatling_home.sh.erb"
   variables(gatling_home: node[:gatling][:home])
 end
+
+cookbook_file "#{node[:gatling][:home]}/bin/gatling.sh" do
+  mode 0755
+  source "gatling.sh"
+end
