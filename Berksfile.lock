@@ -1,0 +1,5 @@
+cookbook 'mysql', :locked_version => '3.0.4'
+cookbook 'redisio', :locked_version => '1.7.0'
+cookbook 'openssl', :locked_version => '1.1.0'
+cookbook 'build-essential', :locked_version => '1.4.2'
+cookbook 'ulimit', :locked_version => '0.3.1'
