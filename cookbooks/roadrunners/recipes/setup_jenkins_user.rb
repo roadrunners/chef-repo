@@ -1,5 +1,3 @@
-group "jenkins"
-
 user "jenkins" do
   home "/var/lib/jenkins"
   supports manage_home: true
