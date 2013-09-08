@@ -10,5 +10,6 @@ default_attributes({
   }
 })
 run_list(
-  "recipe[ulimit]"
+  "recipe[ulimit]",
+  "recipe[roadrunners::setup_jenkins_user]"
 )
