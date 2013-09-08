@@ -12,6 +12,8 @@ default_attributes({
 run_list(
   "role[base]",
   "role[benchmark]",
+  "recipe[mysql::ruby]",
   "recipe[mysql::server]",
-  "recipe[ulimit]"
+  "recipe[ulimit]",
+  "recipe[roadrunners::create_databases]"
 )

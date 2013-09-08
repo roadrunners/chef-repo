@@ -1,5 +1,6 @@
 site :opscode
 
+cookbook "database", "~> 1.4.0"
 cookbook "mysql", "~> 3.0.4"
 cookbook "redisio", "~> 1.7.0"
 cookbook "magic_shell", "~> 0.3.2"
