@@ -2,7 +2,11 @@ name "nginx"
 description "nginx"
 default_attributes({
   nginx: {
-    worker_processes: "auto"
+    worker_processes: "auto",
+    worker_connections: "999999",
+    gzip: "on",
+    gzip_http_version: "1.0",
+    gzip_comp_level: "2"
   },
   ulimit: {
     users: {
