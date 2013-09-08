@@ -16,5 +16,6 @@ run_list(
   "role[nodejs]",
   "recipe[roadrunners::create_app_user]",
   "recipe[ulimit]",
-  "recipe[roadrunners::install_apps]"
+  "recipe[roadrunners::install_apps]",
+  "recipe[roadrunners::configure_apps]"
 )
