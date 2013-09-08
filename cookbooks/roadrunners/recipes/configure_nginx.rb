@@ -1,5 +1,9 @@
 app_servers = search(:node, "role:app")
 
+file "/etc/nginx/sites-enabled/default" do
+  action :delete
+end
+
 template "/etc/nginx/sites-enabled/url-shortener" do
   mode "0644"
   source "nginx_url-shortener.erb"
