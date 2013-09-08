@@ -5,11 +5,14 @@ default_attributes({
     users: {
       ubuntu: {
         filehandle_limit: 999999
+      },
+      jenkins: {
+        filehandle_limit: 999999
       }
     }
   }
 })
 run_list(
-  "recipe[ulimit]",
-  "recipe[roadrunners::setup_jenkins_user]"
+  "recipe[roadrunners::setup_jenkins_user]",
+  "recipe[ulimit]"
 )
