@@ -1,0 +1,27 @@
+upstream backend {
+  <% @backend_servers.each do |s| %>
+  server <%= s %>:3000 max_fails=0 fail_timeout=10s;
+  <% end %>
+  keepalive 512;
+}
+
+server {
+  listen 80;
+
+  client_max_body_size 16M;
+  keepalive_timeout 10;
+
+  location ~* \/url-shortener\/* {
+    rewrite ^/url-shortener/(.*)$ /$1 break;
+    proxy_next_upstream error timeout http_500 http_502 http_503 http_504;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header Host $http_host;
+    proxy_set_header Connection "";
+    proxy_redirect off;
+    proxy_http_version 1.1;
+    proxy_pass http://backend;
+  }
+
+  access_log off;
+  error_log /dev/null crit;
+}

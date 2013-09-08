@@ -20,5 +20,6 @@ run_list(
   "role[base]",
   "role[benchmark]",
   "recipe[nginx]",
-  "recipe[ulimit]"
+  "recipe[ulimit]",
+  "recipe[roadrunners::configure_nginx]"
 )
