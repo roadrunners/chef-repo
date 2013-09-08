@@ -15,5 +15,6 @@ run_list(
   "role[golang]",
   "role[nodejs]",
   "recipe[roadrunners::create_app_user]",
-  "recipe[ulimit]"
+  "recipe[ulimit]",
+  "recipe[roadrunners::install_apps]"
 )
