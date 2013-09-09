@@ -5,19 +5,11 @@ default_attributes({
     servers: [
       { port: "6379" }
     ]
-  },
-  ulimit: {
-    users: {
-      redis: {
-        filehandle_limit: 999999
-      }
-    }
   }
 })
 run_list(
   "role[base]",
   "role[benchmark]",
   "recipe[redisio::install]",
-  "recipe[redisio::enable]",
-  "recipe[ulimit]"
+  "recipe[redisio::enable]"
 )
