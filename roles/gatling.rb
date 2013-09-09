@@ -17,5 +17,6 @@ run_list(
   "role[benchmark]",
   "recipe[java::openjdk]",
   "recipe[scala]",
-  "recipe[roadrunners::install_gatling]"
+  "recipe[roadrunners::install_gatling]",
+  "recipe[roadrunners::install_gatling_tests]"
 )
