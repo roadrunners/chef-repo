@@ -29,17 +29,24 @@ mysql_database_user "roadrunner" do
   connection connection
   password node[:mysql][:roadrunner_password]
   action :create
+
+  TYPES.each do |type|
+    PLATFORMS.each do |platform|
+      notifies :grant, "mysql_database_user[roadrunner_#{platform}_#{type}]", :delayed
+    end
+  end
 end
 
 TYPES.each do |type|
   PLATFORMS.each do |platform|
-    mysql_database_user "roadrunner" do
+    mysql_database_user "roadrunner_#{platform}_#{type}" do
+      username "roadrunner"
       connection connection
       password node[:mysql][:roadrunner_password]
       database_name "#{platform}_#{type}"
       host "%"
       privileges [:all]
-      action :grant
+      action :nothing
     end
   end
 end
