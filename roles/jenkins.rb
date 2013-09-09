@@ -3,5 +3,5 @@ description "Jenkins"
 default_attributes({})
 run_list(
   "role[benchmark]",
-  "recipe[ssh_known_hosts]"
+  "recipe[roadrunners::install_ssh_known_hosts]"
 )
