@@ -9,11 +9,13 @@ TYPES.each do |type|
       use_etag true
       use_last_modified true
       action :create
+      notifies :remove, "dpkg_package[#{platform}-#{type}]", :delayed
+      notifies :install, "dpkg_package[#{platform}-#{type}]", :delayed
     end
 
     dpkg_package "#{platform}-#{type}" do
       source "#{Chef::Config[:file_cache_path]}/#{platform}-#{type}.deb"
-      action [:remove, :install]
+      action :nothing
     end
   end
 end
