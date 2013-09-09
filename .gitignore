@@ -2,9 +2,4 @@
 vendor
 .bundle
 bin
-
-###
-# Ignore Chef key files and secrets
-###
-.chef/*.pem
-.chef/encrypted_data_bag_secret
+.chef
