@@ -20,13 +20,8 @@ TYPES.each do |type|
   end
 end
 
-def mysql_server
-  search(:node, "role:mysql").first
-end
-
-def redis_server
-  search(:node, "role:redis").first
-end
+mysql_server = search(:node, "role:mysql").first
+redis_server = search(:node, "role:redis").first
 
 template "/opt/go-url-shortener/src/go-url-shortener/conf/app.conf" do
   owner "roadrunner"
