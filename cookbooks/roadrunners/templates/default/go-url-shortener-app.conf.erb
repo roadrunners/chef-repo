@@ -37,9 +37,9 @@ log.info.output  = off
 log.warn.output  = stderr
 log.error.output = stderr
 
-db.host     = <%= @db_host %>
-db.name     = <%= @db_name %>
-db.username = <%= @db_username %>
-db.password = <%= @db_password %>
+db.host     = <%= @mysql_server[:ec2][:local_ipv4] %>:3306
+db.name     = go_url_shortener
+db.username = roadrunner
+db.password = <%= @mysql_server[:mysql][:roadrunner_password] %>
 
-redis.addr=<%= @redis_host %>:6379
+redis.addr=<%= @redis_server[:ec2][:local_ipv4] %>:6379

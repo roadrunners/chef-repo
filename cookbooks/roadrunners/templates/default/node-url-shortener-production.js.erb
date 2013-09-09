@@ -1,12 +1,12 @@
 module.exports = {
   db: {
-    username: "<%= @db_username %>",
-    password: "<%= @db_password %>",
-    database: "<%= @db_name %>",
-    host: "<%= @db_host %>",
+    username: "roadrunner",
+    password: "<%= @mysql_server[:mysql][:roadrunner_password] %>",
+    database: "node_url_shortener",
+    host: "<%= @mysql_server[:ec2][:local_ipv4] %>",
     logging: false
   },
   redis: {
-    host: "<%= @redis_host %>"
+    host: "<%= @redis_server[:ec2][:local_ipv4] %>"
   }
 }
