@@ -18,8 +18,7 @@ TYPES.each do |type|
   PLATFORMS.each do |platform|
     mysql_database "#{platform}_#{type}" do
       connection connection
-      action [:drop, :create]
-      sql
+      action :create
     end
   end
 end
