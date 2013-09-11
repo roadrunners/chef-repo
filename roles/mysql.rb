@@ -15,5 +15,5 @@ run_list(
   "recipe[mysql::ruby]",
   "recipe[mysql::server]",
   "recipe[ulimit]",
-  "recipe[roadrunners::create_databases]"
+  "recipe[roadrunners::initialize_databases]"
 )

@@ -14,11 +14,37 @@ node.save
 
 # Create databases
 
+CREATE_QUERIES = {
+  go_url_shortener: "CREATE TABLE `short_url` (`id` int(11) NOT NULL AUTO_INCREMENT, `url` text NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8;",
+  node_url_shortener: "CREATE TABLE `short_url` (`id` int(11) NOT NULL AUTO_INCREMENT, `url` text, `createdAt` datetime NOT NULL, `updatedAt` datetime NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8;"
+}
+
+CLEAN_QUERIES = {
+  go_url_shortener: "TRUNCATE TABLE `short_url`;",
+  node_url_shortener: "TRUNCATE TABLE `short_url`;"
+}
+
 TYPES.each do |type|
   PLATFORMS.each do |platform|
     mysql_database "#{platform}_#{type}" do
       connection connection
       action :create
+      notifies :query, "mysql_database[#{platform}_#{type}_schema]", :delayed
+      notifies :query, "mysql_database[#{platform}_#{type}_clean]", :delayed
+    end
+
+    mysql_database "#{platform}_#{type}_schema" do
+      database_name "#{platform}_#{type}"
+      connection connection
+      sql CREATE_QUERIES["#{platform}_#{type}".to_sym]
+      action :nothing
+    end
+
+    mysql_database "#{platform}_#{type}_clean" do
+      database_name "#{platform}_#{type}"
+      connection connection
+      sql CLEAN_QUERIES["#{platform}_#{type}".to_sym]
+      action :nothing
     end
   end
 end
