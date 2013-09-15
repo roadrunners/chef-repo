@@ -3,14 +3,15 @@ description "nginx"
 default_attributes({
   nginx: {
     worker_processes: "auto",
-    worker_connections: "999999",
+    worker_rlimit_nofile: 999999,
+    worker_connections: 20000,
     gzip: "on",
     gzip_http_version: "1.0",
-    gzip_comp_level: "2"
+    gzip_comp_level: "1"
   },
   ulimit: {
     users: {
-      nginx: {
+      "www-data" => {
         filehandle_limit: 999999
       }
     }
