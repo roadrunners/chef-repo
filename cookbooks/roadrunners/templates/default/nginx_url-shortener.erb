@@ -2,7 +2,7 @@ upstream backend {
   <% @backend_servers.each do |s| %>
   server <%= s %>:3000 max_fails=0 fail_timeout=10s;
   <% end %>
-  keepalive 512;
+  keepalive 16;
 }
 
 server {
