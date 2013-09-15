@@ -7,6 +7,9 @@ default_attributes({
         ipv4: {
           ip_local_port_range: "1024 65000",
           tcp_tw_reuse: "1",
+          tcp_tw_recycle: "1",
+          tcp_keepalive_probes: "5",
+          tcp_keepalive_intvl: "15",
           tcp_window_scaling: "1",
           tcp_rmem: "4096 87380 16777216",
           tcp_wmem: "4096 65536 16777216",
