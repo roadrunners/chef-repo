@@ -7,8 +7,7 @@ default_attributes({
     worker_connections: 20000,
     gzip: "on",
     gzip_http_version: "1.0",
-    gzip_comp_level: "1",
-    keepalive_timeout: 15
+    gzip_comp_level: "1"
   },
   ulimit: {
     users: {
