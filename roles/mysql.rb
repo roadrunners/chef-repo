@@ -6,8 +6,8 @@ default_attributes({
       key_buffer_size: "32M",
       "myisam-recover" => "FORCE,BACKUP",
 
-      max_connections: 500,
-      thread_cache_size: 50,
+      max_connections: 2000,
+      thread_cache_size: 200,
       table_open_cache: 2048,
 
       innodb_flush_method: "O_DIRECT",
