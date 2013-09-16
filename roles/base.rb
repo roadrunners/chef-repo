@@ -14,5 +14,6 @@ default_attributes({
 })
 run_list(
   "recipe[roadrunners::setup_jenkins_user]",
+  "recipe[roadrunners::install_helpful_utilities]",
   "recipe[ulimit]"
 )
