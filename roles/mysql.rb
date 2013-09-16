@@ -18,7 +18,7 @@ default_attributes({
   },
   ulimit: {
     users: {
-      nginx: {
+      mysql: {
         filehandle_limit: 999999
       }
     }
