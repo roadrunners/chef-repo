@@ -15,6 +15,15 @@ default_attributes({
         filehandle_limit: 999999
       }
     }
+  },
+  sysctl: {
+    params: {
+      net: {
+        ipv4: {
+          tcp_tw_recycle: "0"
+        }
+      }
+    }
   }
 })
 run_list(
@@ -22,5 +31,6 @@ run_list(
   "role[benchmark]",
   "recipe[nginx]",
   "recipe[ulimit]",
-  "recipe[roadrunners::configure_nginx]"
+  "recipe[roadrunners::configure_nginx]",
+  "recipe[sysctl]"
 )
