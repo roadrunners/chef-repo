@@ -41,7 +41,7 @@ db.host     = <%= @mysql_server[:ec2][:local_ipv4] %>:3306
 db.name     = go_url_shortener
 db.username = roadrunner
 db.password = <%= @mysql_server[:mysql][:roadrunner_password] %>
-db.maxidle  = 200
+db.maxidle  = 50
 
 redis.addr     = <%= @redis_server[:ec2][:local_ipv4] %>:6379
 redis.poolsize = 50
