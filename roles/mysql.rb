@@ -13,7 +13,7 @@ default_attributes({
       innodb_flush_method: "O_DIRECT",
       innodb_flush_log_at_trx_commit: 2,
       innodb_file_per_table: 1,
-      innodb_buffer_pool_size: "3G"
+      innodb_buffer_pool_size: "8G"
     }
   },
   ulimit: {
